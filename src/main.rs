@@ -31,7 +31,7 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
-    match day_2_problem_2::problem_4() {
+    match day_2_problem_2::day_2_problem_2() {
         Ok(result) => {
             println!("Day 2 problem 2: {:?}", result);
         }
