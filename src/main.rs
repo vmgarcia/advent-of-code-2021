@@ -8,6 +8,8 @@ mod day_4_problem_1;
 mod day_4_problem_2;
 mod day_5_problem_1;
 mod day_5_problem_2;
+mod day_6_problem_1;
+mod day_6_problem_2;
 
 fn main() {
     match day_1_problem_1::day_1_problem_1() {
@@ -90,6 +92,23 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
+    match day_6_problem_1::day_6_problem_1() {
+        Ok(result) => {
+            println!("Day 6 problem 1: {:?}", result);
+        }
+        Err(err) => {
+            println!("There was an error! {:?}", err);
+        }
+    }
+    match day_6_problem_2::day_6_problem_2() {
+        Ok(result) => {
+            println!("Day 6 problem 2: {:?}", result);
+        }
+        Err(err) => {
+            println!("There was an error! {:?}", err);
+        }
+    }
+
 
 
 
