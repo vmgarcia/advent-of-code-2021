@@ -4,7 +4,8 @@ mod problem_3;
 mod problem_4;
 mod problem_5;
 mod problem_6;
-
+mod problem_7;
+mod problem_8;
 fn main() {
     match problem_1::problem_1() {
         Ok(result) => {
@@ -54,6 +55,23 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
+    match problem_7::problem_7() {
+        Ok(result) => {
+            println!("Problem 7: {:?}", result);
+        }
+        Err(err) => {
+            println!("There was an error! {:?}", err);
+        }
+    }
+    match problem_8::problem_8() {
+        Ok(result) => {
+            println!("Problem 8: {:?}", result);
+        }
+        Err(err) => {
+            println!("There was an error! {:?}", err);
+        }
+    }
+
 
 
 }

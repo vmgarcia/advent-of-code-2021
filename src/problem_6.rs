@@ -72,7 +72,6 @@ pub fn problem_6() -> io::Result<u64> {
         let (number_count, bit_count) = get_set_bit_count(&filtered_oxygen_values);
         let oxygen_generator_rating = get_oxygen_generator_rating(number_count, &bit_count);
         let bit = oxygen_generator_rating[i];
-        // println!("filtered_vals {:?} \n {:?}, {:?}, {:?}", filtered_oxygen_values, bit_count, oxygen_generator_rating, bit);
         filtered_oxygen_values = filtered_oxygen_values.into_iter().filter(|number| {
             number[i] == bit
         }).collect::<Vec<Vec<u8>>>();
@@ -84,7 +83,6 @@ pub fn problem_6() -> io::Result<u64> {
         let (number_count, bit_count) = get_set_bit_count(&filtered_co2_values);
         let co2_scrubber_rating = get_co2_scrubber_rating(number_count, &bit_count);
         let bit = co2_scrubber_rating[i];
-        println!("filtered_vals {:?} \n {:?}, {:?}, {:?}", filtered_co2_values, bit_count, co2_scrubber_rating, bit);
         filtered_co2_values = filtered_co2_values.into_iter().filter(|number| {
             number[i] == bit
         }).collect::<Vec<Vec<u8>>>();
