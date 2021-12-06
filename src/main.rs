@@ -1,71 +1,71 @@
-mod problem_1;
-mod problem_2;
-mod problem_3;
-mod problem_4;
-mod problem_5;
-mod problem_6;
-mod problem_7;
-mod problem_8;
+mod day_1_problem_1;
+mod day_1_problem_2;
+mod day_2_problem_1;
+mod day_2_problem_2;
+mod day_3_problem_1;
+mod day_3_problem_2;
+mod day_4_problem_1;
+mod day_4_problem_2;
 fn main() {
-    match problem_1::problem_1() {
+    match day_1_problem_1::day_1_problem_1() {
         Ok(result) => {
-            println!("Problem 1: {:?}", result);
+            println!("Day 1 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_2::problem_2() {
+    match day_1_problem_2::day_1_problem_2() {
         Ok(result) => {
-            println!("Problem 2: {:?}", result);
+            println!("Day 1 problem 2: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_3::problem_3() {
+    match day_2_problem_1::day_2_problem_1() {
         Ok(result) => {
-            println!("Problem 3: {:?}", result);
+            println!("Day 2 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_4::problem_4() {
+    match day_2_problem_2::problem_4() {
         Ok(result) => {
-            println!("Problem 4: {:?}", result);
+            println!("Day 2 problem 2: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_5::problem_5() {
+    match day_3_problem_1::day_3_problem_1() {
         Ok(result) => {
-            println!("Problem 5: {:?}", result);
+            println!("Day 3 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_6::problem_6() {
+    match day_3_problem_2::day_3_problem_2() {
         Ok(result) => {
-            println!("Problem 6: {:?}", result);
+            println!("Day 3 problem 2: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_7::problem_7() {
+    match day_4_problem_1::day_4_problem_1() {
         Ok(result) => {
-            println!("Problem 7: {:?}", result);
+            println!("Day 4 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match problem_8::problem_8() {
+    match day_4_problem_2::day_4_problem_2() {
         Ok(result) => {
-            println!("Problem 8: {:?}", result);
+            println!("Day 4 problem 2: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);

@@ -3,12 +3,12 @@ use std::io;
 use std::io::prelude::*;
 use std::path::Path;
 
-pub fn problem_4() -> io::Result<u64> {
+pub fn day_2_problem_1() -> io::Result<u64> {
     let path_to_read = Path::new("./src/day-2-input.txt");
     let file = fs::File::open(&path_to_read)?;
     let reader = io::BufReader::new(file);
 
-    let mut position = (0, 0, 0);
+    let mut position = (0, 0);
     for line_result in reader.lines() {
         let line = line_result?;
         let mut line = line.split_whitespace();
@@ -17,13 +17,12 @@ pub fn problem_4() -> io::Result<u64> {
                 match direction {
                     "forward" => {
                         position.0 += distance;
-                        position.1 += position.2 * distance;
                     },
                     "down" => {
-                        position.2 += distance;
+                        position.1 += distance;
                     },
                     "up" => {
-                        position.2 -= distance;
+                        position.1 -= distance;
                     },
                     _ => ()
                 }

@@ -4,7 +4,7 @@ use std::io;
 use std::io::prelude::*;
 use std::path::Path;
 
-pub fn problem_5() -> io::Result<u64> {
+pub fn day_3_problem_1() -> io::Result<u64> {
     let path_to_read = Path::new("./src/day-3-input.txt");
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();

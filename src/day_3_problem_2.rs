@@ -37,7 +37,7 @@ fn get_co2_scrubber_rating(number_count: u32, bit_count: &Vec<u32>) -> Vec<u8> {
         .collect::<Vec<u8>>()
 }
 
-pub fn problem_6() -> io::Result<u64> {
+pub fn day_3_problem_2() -> io::Result<u64> {
     let path_to_read = Path::new("./src/day-3-input.txt");
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();

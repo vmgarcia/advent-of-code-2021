@@ -112,7 +112,7 @@ fn sum_of_unmarked_numbers(board: &Vec<Vec<i32>>) -> i32 {
   total
 }
 
-pub fn problem_7() -> io::Result<i32> {
+pub fn day_4_problem_1() -> io::Result<i32> {
     let path_to_read = Path::new("./src/day-4-input.txt");
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();
