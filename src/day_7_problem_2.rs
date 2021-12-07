@@ -21,13 +21,11 @@ pub fn day_7_problem_2() -> io::Result<u64> {
     let mut crab_positions = parse_ints(&file_contents);
     crab_positions.sort();
     let max_position = crab_positions[crab_positions.len()-1];
-    let fuel_needed = (0..=max_position).into_par_iter().map(|end_pos| {
+    let fuel_needed = (0..=max_position).map(|end_pos| {
       let mut total_fuel_needed = 0;
       for start_pos in &crab_positions {
         let current_fuel_needed = cmp::max(end_pos, *start_pos) - cmp::min(end_pos, *start_pos);
-        for i in 1..=current_fuel_needed {
-          total_fuel_needed += i;
-        }
+        total_fuel_needed += (current_fuel_needed*(current_fuel_needed+1))/2;
       }
       total_fuel_needed
     }).collect::<Vec<u64>>();
