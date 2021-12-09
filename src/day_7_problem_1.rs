@@ -17,10 +17,8 @@ pub fn day_7_problem_1() -> io::Result<u64> {
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();
     file.read_to_string(&mut file_contents)?;
-    file_contents = String::from("16,1,2,0,4,2,7,1,2,14");
     let mut crab_positions = parse_ints(&file_contents);
     crab_positions.sort();
-    println!("{:?}", crab_positions);
 
     let fuel_needed = crab_positions.clone().into_iter().map(|end_pos| {
       let mut total_fuel_needed = 0;

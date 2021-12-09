@@ -47,7 +47,6 @@ fn test_mark_board() {
 }
 
 fn did_win(board: & Vec<Vec<i32>>) -> bool {
-  let mut flag = false;
   for line in board {
     if !line.iter().any(| x| *x != -1) {
       return true;
@@ -119,7 +118,7 @@ pub fn day_4_problem_2() -> io::Result<i32> {
     file.read_to_string(&mut file_contents)?;
 
     let mut split = file_contents.split("\n");
-    let mut numbers: Vec<i32> = split.next().unwrap().split(",").map(|x| {
+    let numbers: Vec<i32> = split.next().unwrap().split(",").map(|x| {
       i32::from_str_radix(x, 10).unwrap()
     }).collect();
 
