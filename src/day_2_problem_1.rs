@@ -17,14 +17,14 @@ pub fn day_2_problem_1() -> io::Result<u64> {
                 match direction {
                     "forward" => {
                         position.0 += distance;
-                    },
+                    }
                     "down" => {
                         position.1 += distance;
-                    },
+                    }
                     "up" => {
                         position.1 -= distance;
-                    },
-                    _ => ()
+                    }
+                    _ => (),
                 }
             }
         }

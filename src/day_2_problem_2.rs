@@ -18,14 +18,14 @@ pub fn day_2_problem_2() -> io::Result<u64> {
                     "forward" => {
                         position.0 += distance;
                         position.1 += position.2 * distance;
-                    },
+                    }
                     "down" => {
                         position.2 += distance;
-                    },
+                    }
                     "up" => {
                         position.2 -= distance;
-                    },
-                    _ => ()
+                    }
+                    _ => (),
                 }
             }
         }

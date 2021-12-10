@@ -163,9 +163,4 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
-
-
-
-
-
 }
