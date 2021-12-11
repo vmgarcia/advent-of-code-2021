@@ -1,3 +1,5 @@
+mod day_10_problem_1;
+mod day_10_problem_2;
 mod day_1_problem_1;
 mod day_1_problem_2;
 mod day_2_problem_1;
@@ -16,8 +18,6 @@ mod day_8_problem_1;
 mod day_8_problem_2;
 mod day_9_problem_1;
 mod day_9_problem_2;
-mod day_10_problem_1;
-mod day_10_problem_2;
 
 fn main() {
     match day_1_problem_1::day_1_problem_1() {
@@ -181,6 +181,4 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
-
-
 }

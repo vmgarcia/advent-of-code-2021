@@ -11,7 +11,7 @@ fn get_points_for_bracket(bracket: char) -> i32 {
         ']' => 57,
         '}' => 1197,
         '>' => 25137,
-        _ => 0
+        _ => 0,
     }
 }
 
@@ -21,7 +21,7 @@ fn get_closing_bracket(bracket: char) -> Option<char> {
         '[' => Some(']'),
         '{' => Some('}'),
         '<' => Some('>'),
-        _ => None
+        _ => None,
     }
 }
 
@@ -31,7 +31,7 @@ fn is_opening_bracket(bracket: char) -> bool {
         '[' => true,
         '{' => true,
         '<' => true,
-        _ => false
+        _ => false,
     }
 }
 
@@ -52,7 +52,7 @@ pub fn day_10_problem_1() -> io::Result<i32> {
                 if get_closing_bracket(opening_bracket).unwrap() != bracket {
                     syntax_error_score += get_points_for_bracket(bracket);
                     break;
-                } 
+                }
             }
         }
     }
