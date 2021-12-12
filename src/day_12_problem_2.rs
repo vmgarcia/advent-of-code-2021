@@ -30,62 +30,49 @@ fn parse_input(input: String) -> HashMap<String, HashSet<String>> {
     parsed_input
 }
 
-pub fn day_12_problem_2() -> io::Result<usize> {
+pub fn day_12_problem_2() -> io::Result<i32> {
     let path_to_read = Path::new("./src/day-12-input.txt");
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();
     file.read_to_string(&mut file_contents)?;
 
     let map = parse_input(file_contents);
-    let mut paths = HashSet::new();
+    let mut paths = 0;
     let mut path = Vec::new();
     let mut visits = HashMap::new();
     let mut flag = true;
     fn find_paths(
-        start: &String,
+        current: &String,
         path: &mut Vec<String>,
-        paths: &mut HashSet<String>,
+        paths: &mut i32,
         map: &HashMap<String, HashSet<String>>,
         visits: &mut HashMap<String, i32>,
         flag: &mut bool,
     ) {
-        fn find_paths_helper(
-            current: &String,
-            path: &mut Vec<String>,
-            paths: &mut HashSet<String>,
-            map: &HashMap<String, HashSet<String>>,
-            visits: &mut HashMap<String, i32>,
-            flag: &mut bool,
-        ) {
-            path.push(current.clone());
-            visits.insert(current.clone(), visits.get(current).unwrap_or(&0) + 1);
-            let mut set_flag = false;
-            if current.to_lowercase() == *current
-                && *flag
-                && *visits.get(current).unwrap_or(&0) >= 2
-            {
-                *flag = false;
-                set_flag = true;
-            }
-            if let Some(neighbors) = map.get(current) {
-                for neighbor in neighbors {
-                    if *neighbor == String::from("end") {
-                        paths.insert(path.join("-"));
-                    } else if neighbor.to_lowercase() != *neighbor
-                        || *flag && *visits.get(neighbor).unwrap_or(&0) < 2
-                        || *visits.get(neighbor).unwrap_or(&0) < 1
-                    {
-                        find_paths_helper(neighbor, path, paths, map, visits, flag);
-                    }
+        path.push(current.clone());
+        visits.insert(current.clone(), visits.get(current).unwrap_or(&0) + 1);
+        let mut set_flag = false;
+        if current.to_lowercase() == *current && *flag && *visits.get(current).unwrap_or(&0) >= 2 {
+            *flag = false;
+            set_flag = true;
+        }
+        if let Some(neighbors) = map.get(current) {
+            for neighbor in neighbors {
+                if *neighbor == String::from("end") {
+                    *paths += 1
+                } else if neighbor.to_lowercase() != *neighbor
+                    || *flag && *visits.get(neighbor).unwrap_or(&0) < 2
+                    || *visits.get(neighbor).unwrap_or(&0) < 1
+                {
+                    find_paths(neighbor, path, paths, map, visits, flag);
                 }
             }
-            path.pop();
-            visits.insert(current.clone(), visits.get(current).unwrap_or(&0) - 1);
-            if set_flag {
-                *flag = true;
-            }
         }
-        find_paths_helper(start, path, paths, map, visits, flag);
+        path.pop();
+        visits.insert(current.clone(), visits.get(current).unwrap_or(&0) - 1);
+        if set_flag {
+            *flag = true;
+        }
     }
     find_paths(
         &String::from("start"),
@@ -95,5 +82,5 @@ pub fn day_12_problem_2() -> io::Result<usize> {
         &mut visits,
         &mut flag,
     );
-    Ok(paths.len())
+    Ok(paths)
 }
