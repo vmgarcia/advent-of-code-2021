@@ -3,6 +3,7 @@ use std::fs;
 use std::io;
 use std::io::prelude::*;
 use std::path::Path;
+use std::time::Instant;
 
 fn insert_or_default(map: &mut HashMap<String, HashSet<String>>, key: String, value: String) {
     if let Some(set) = map.get_mut(&key) {
