@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 rayon = "1.5"
 regex = "1.5"
+counter = "0.5.2"
+itertools = "0.10"
