@@ -8,6 +8,8 @@ mod day_13_problem_1;
 mod day_13_problem_2;
 mod day_14_problem_1;
 mod day_14_problem_2;
+mod day_15_problem_1;
+mod day_15_problem_2;
 mod day_1_problem_1;
 mod day_1_problem_2;
 mod day_2_problem_1;
@@ -221,33 +223,49 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
-    match day_13_problem_1::day_13_problem_1() {
+    // match day_13_problem_1::day_13_problem_1() {
+    //     Ok(result) => {
+    //         println!("Day 13 problem 1: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    // match day_13_problem_2::day_13_problem_2() {
+    //     Ok(result) => {
+    //         println!("Day 13 problem 2: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    // match day_14_problem_1::day_14_problem_1() {
+    //     Ok(result) => {
+    //         println!("Day 14 problem 1: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    // match day_14_problem_2::day_14_problem_2() {
+    //     Ok(result) => {
+    //         println!("Day 14 problem 2: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    match day_15_problem_1::day_15_problem_1() {
         Ok(result) => {
-            println!("Day 13 problem 1: {:?}", result);
+            println!("Day 15 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match day_13_problem_2::day_13_problem_2() {
+    match day_15_problem_2::day_15_problem_2() {
         Ok(result) => {
-            println!("Day 13 problem 2: {:?}", result);
-        }
-        Err(err) => {
-            println!("There was an error! {:?}", err);
-        }
-    }
-    match day_14_problem_1::day_14_problem_1() {
-        Ok(result) => {
-            println!("Day 14 problem 1: {:?}", result);
-        }
-        Err(err) => {
-            println!("There was an error! {:?}", err);
-        }
-    }
-    match day_14_problem_2::day_14_problem_2() {
-        Ok(result) => {
-            println!("Day 14 problem 2: {:?}", result);
+            println!("Day 15 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
