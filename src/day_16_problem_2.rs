@@ -212,7 +212,6 @@ impl Iterator for PacketStreamer {
 }
 
 fn get_result(packet: PacketType) -> u64 {
-    println!("{:?}", packet);
     match packet {
         PacketType::Literal(_, _, value) => value,
         PacketType::Operator(type_id, _, subpackets) => match type_id {
