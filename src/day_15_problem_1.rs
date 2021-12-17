@@ -43,16 +43,6 @@ pub fn day_15_problem_1() -> io::Result<u32> {
     let mut file_contents = String::new();
     file.read_to_string(&mut file_contents)?;
 
-    //     file_contents = String::from("1163751742
-    // 1381373672
-    // 2136511328
-    // 3694931569
-    // 7463417111
-    // 1319128137
-    // 1359912421
-    // 3125421639
-    // 1293138521
-    // 2311944581");
     let (map, (rows, cols)) = parse_input(file_contents);
     let destination = (rows - 1, cols - 1);
 
