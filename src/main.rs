@@ -14,6 +14,8 @@ mod day_16_problem_1;
 mod day_16_problem_2;
 mod day_17_problem_1;
 mod day_17_problem_2;
+mod day_18_problem_1;
+mod day_18_problem_2;
 mod day_1_problem_1;
 mod day_1_problem_2;
 mod day_2_problem_1;
@@ -32,7 +34,6 @@ mod day_8_problem_1;
 mod day_8_problem_2;
 mod day_9_problem_1;
 mod day_9_problem_2;
-
 fn main() {
     match day_1_problem_1::day_1_problem_1() {
         Ok(result) => {
@@ -291,17 +292,33 @@ fn main() {
             println!("There was an error! {:?}", err);
         }
     }
-    match day_17_problem_1::day_17_problem_1() {
+    // match day_17_problem_1::day_17_problem_1() {
+    //     Ok(result) => {
+    //         println!("Day 17 problem 1: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    // match day_17_problem_2::day_17_problem_2() {
+    //     Ok(result) => {
+    //         println!("Day 17 problem 2: {:?}", result);
+    //     }
+    //     Err(err) => {
+    //         println!("There was an error! {:?}", err);
+    //     }
+    // }
+    match day_18_problem_1::day_18_problem_1() {
         Ok(result) => {
-            println!("Day 17 problem 1: {:?}", result);
+            println!("Day 18 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
         }
     }
-    match day_17_problem_2::day_17_problem_2() {
+    match day_18_problem_2::day_18_problem_2() {
         Ok(result) => {
-            println!("Day 17 problem 2: {:?}", result);
+            println!("Day 18 problem 1: {:?}", result);
         }
         Err(err) => {
             println!("There was an error! {:?}", err);
