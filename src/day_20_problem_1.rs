@@ -121,7 +121,7 @@ fn apply_algorithm_to_pixel(
         .get(convert_bit_vec_to_int(get_values_in_block(
             index, image, dimensions,
         )))
-        .unwrap_or(&0)
+        .unwrap()
 }
 
 #[test]
@@ -218,15 +218,18 @@ pub fn day_20_problem_1() -> io::Result<u64> {
 
     let (image_processing_algorithm, image, Dimensions(width, height)) = parse_input(file_contents);
 
-    let (padded_image, Dimensions(padded_width, padded_height)) =
-        pad_image(image, Dimensions(width, height));
-    let mut new_image = padded_image;
-    let mut new_width = padded_width;
-    let mut new_height = padded_height;
+    let mut new_image = image;
+    let mut new_width = width;
+    let mut new_height = height;
     // print_image(&new_image, Dimensions(new_width, new_height));
     // println!("{:?}", image_processing_algorithm);
     for _ in 0..2 {
-        println!("{:?}", "hi");
+      let (new_padded_image, Dimensions(new_padded_width, new_padded_height)) =
+        pad_image(new_image, Dimensions(new_width, new_height));
+        new_image = new_padded_image;
+        new_width = new_padded_width;
+        new_height = new_padded_height;
+
         new_image = (0..new_image.len())
             .map(|index| {
                 apply_algorithm_to_pixel(
@@ -238,13 +241,8 @@ pub fn day_20_problem_1() -> io::Result<u64> {
             })
             .collect::<Vec<u8>>();
 
-        let (new_padded_image, Dimensions(new_padded_width, new_padded_height)) =
-            pad_image(new_image, Dimensions(new_width, new_height));
-        new_image = new_padded_image;
-        new_width = new_padded_width;
-        new_height = new_padded_height;
-        // print_image(&new_image, Dimensions(new_width, new_height));
     }
+    print_image(&new_image, Dimensions(new_width, new_height));
 
     // println!("{:?}, {}", new_image, new_image.len());
     let mut sum: u64 = 0;
