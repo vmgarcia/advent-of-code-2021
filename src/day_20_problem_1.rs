@@ -51,10 +51,11 @@ fn get_values_in_block(
     index: usize,
     image: &Vec<u8>,
     Dimensions(width, height): Dimensions,
+    iteration: i64
 ) -> Vec<u8> {
     let get_value = |i: i64| -> u8 {
         if i < 0 || i >= image.len() as i64 {
-            0
+            (iteration % 2) as u8
         } else {
             *image.get(i as usize).unwrap()
         }
@@ -92,7 +93,7 @@ fn test_get_values_in_block() {
     let (_, image, Dimensions(width, height)) = parse_input(file_contents);
 
     assert_eq!(
-        get_values_in_block(12, &image, Dimensions(width, height)),
+        get_values_in_block(12, &image, Dimensions(width, height), 0),
         vec![0, 0, 0, 1, 0, 0, 0, 1, 0]
     );
 }
@@ -116,10 +117,11 @@ fn apply_algorithm_to_pixel(
     image: &Vec<u8>,
     index: usize,
     dimensions: Dimensions,
+    iteration: i64
 ) -> u8 {
     *algorithm
         .get(convert_bit_vec_to_int(get_values_in_block(
-            index, image, dimensions,
+            index, image, dimensions, iteration
         )))
         .unwrap()
 }
@@ -140,31 +142,32 @@ fn test_apply_algorithm_to_pixel() {
             &image_processing_algorithm,
             &image,
             12,
-            Dimensions(width, height)
+            Dimensions(width, height),
+            0
         ),
         1
     );
 }
 
-fn pad_image(image: Vec<u8>, Dimensions(width, height): Dimensions) -> (Vec<u8>, Dimensions) {
+fn pad_image(image: Vec<u8>, Dimensions(width, height): Dimensions, iteration: i64) -> (Vec<u8>, Dimensions) {
     let padded_width = width + 2;
     let padded_height = height + 2;
 
     let mut padded_image = Vec::with_capacity(padded_width * padded_height);
     for _ in 0..padded_width {
-        padded_image.push(0);
+        padded_image.push((iteration % 2) as u8);
     }
     for (i, bit) in image.iter().enumerate() {
         if i % width == 0 {
-            padded_image.push(0);
+          padded_image.push((iteration % 2) as u8);
         }
         padded_image.push(*bit);
         if (i + 1) % width == 0 {
-            padded_image.push(0);
+          padded_image.push((iteration % 2) as u8);
         }
     }
     for _ in 0..padded_width {
-        padded_image.push(0);
+      padded_image.push((iteration % 2) as u8);
     }
     (padded_image, Dimensions(padded_width, padded_height))
 }
@@ -181,7 +184,7 @@ fn test_pad_image() {
 
     let (image_processing_algorithm, image, Dimensions(width, height)) = parse_input(file_contents);
 
-    let (image, Dimensions(width, height)) = pad_image(image, Dimensions(width, height));
+    let (image, Dimensions(width, height)) = pad_image(image, Dimensions(width, height), 0);
     print_image(&image, Dimensions(width, height));
 }
 
@@ -208,13 +211,13 @@ pub fn day_20_problem_1() -> io::Result<u64> {
     let mut file = fs::File::open(&path_to_read)?;
     let mut file_contents = String::new();
     file.read_to_string(&mut file_contents)?;
-    file_contents = String::from("..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..###..######.###...####..#..#####..##..#.#####...##.#.#..#.##..#.#......#.###.######.###.####...#.##.##..#..#..#####.....#.#....###..#.##......#.....#..#..#..##..#...##.######.####.####.#.#...#.......#..#.#.#...####.##.#......#..#...##.#.##..#...##.#.##..###.#......#.#.......#.#.#.####.###.##...#.....####.#..#..#.##.#....##..#.####....##...##..#...#......#.#.......#.......##..####..#...#.#.#...##..#.#..###..#####........#..####......#..#
+//     file_contents = String::from("..#.#..#####.#.#.#.###.##.....###.##.#..###.####..#####..#....#..#..##..###..######.###...####..#..#####..##..#.#####...##.#.#..#.##..#.#......#.###.######.###.####...#.##.##..#..#..#####.....#.#....###..#.##......#.....#..#..#..##..#...##.######.####.####.#.#...#.......#..#.#.#...####.##.#......#..#...##.#.##..#...##.#.##..###.#......#.#.......#.#.#.####.###.##...#.....####.#..#..#.##.#....##..#.####....##...##..#...#......#.#.......#.......##..####..#...#.#.#...##..#.#..###..#####........#..####......#..#
     
-#..#.
-#....
-##..#
-..#..
-..###");
+// #..#.
+// #....
+// ##..#
+// ..#..
+// ..###");
 
     let (image_processing_algorithm, image, Dimensions(width, height)) = parse_input(file_contents);
 
@@ -223,9 +226,10 @@ pub fn day_20_problem_1() -> io::Result<u64> {
     let mut new_height = height;
     // print_image(&new_image, Dimensions(new_width, new_height));
     // println!("{:?}", image_processing_algorithm);
-    for _ in 0..2 {
+    for i in 0..50 {
+
       let (new_padded_image, Dimensions(new_padded_width, new_padded_height)) =
-        pad_image(new_image, Dimensions(new_width, new_height));
+        pad_image(new_image, Dimensions(new_width, new_height), i);
         new_image = new_padded_image;
         new_width = new_padded_width;
         new_height = new_padded_height;
@@ -237,12 +241,12 @@ pub fn day_20_problem_1() -> io::Result<u64> {
                     &new_image,
                     index,
                     Dimensions(new_width, new_height),
+                    i
                 )
             })
             .collect::<Vec<u8>>();
 
     }
-    print_image(&new_image, Dimensions(new_width, new_height));
 
     // println!("{:?}, {}", new_image, new_image.len());
     let mut sum: u64 = 0;
